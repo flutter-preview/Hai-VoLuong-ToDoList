@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       body: Container(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, size: 40),
       ),
     );
   }
