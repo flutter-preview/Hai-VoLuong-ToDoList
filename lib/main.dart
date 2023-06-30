@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widget/card_body_widget.dart';
+import 'widget/card_modal_bottom.dart';
 
 void main(List<String> args) {
   runApp(const MaterialApp(
@@ -40,33 +41,7 @@ class MyApp extends StatelessWidget {
             isScrollControlled: true,
             context: context,
             builder: (BuildContext content) {
-              return Padding(
-                padding: MediaQuery.of(context).viewInsets,
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Add Task',
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('Add Task'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
+              return const ModalBottom();
             },
           );
         },
