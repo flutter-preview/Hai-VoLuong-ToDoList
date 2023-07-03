@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CardBody extends StatelessWidget {
-  const CardBody({
+  CardBody({
     super.key,
+    required this.item,
   });
+
+  var item;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +21,15 @@ class CardBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             Text(
-              'Tập Thể Dục Buổi Sáng',
-              style: TextStyle(
+              item.name,
+              style: const TextStyle(
                   color: Color(0xff4b4b4b),
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
-            Icon(
+            const Icon(
               Icons.delete_outline,
               color: Color(0xff4b4b4b),
               size: 20,

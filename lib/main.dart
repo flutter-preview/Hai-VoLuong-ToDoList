@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'modal/Items.dart';
 import 'widget/card_body_widget.dart';
 import 'widget/card_modal_bottom.dart';
 
@@ -9,12 +10,27 @@ void main(List<String> args) {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final List<Items> items = [];
+
+  void _handleAddTask(String name) {
+    final newItem = Items(id: DateTime.now().toString(), name: name);
+    setState(() {
+      items.add(newItem);
+    });
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    print('rebuild');
     return Scaffold(
       appBar: AppBar(
         title: const Text('ToDoList',
@@ -23,12 +39,11 @@ class MyApp extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
-          children: const [
-            CardBody(),
-            CardBody(),
-            CardBody(),
-            CardBody(),
-          ],
+          children: items
+              .map((item) => CardBody(
+                    item: item,
+                  ))
+              .toList(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -41,7 +56,7 @@ class MyApp extends StatelessWidget {
             isScrollControlled: true,
             context: context,
             builder: (BuildContext content) {
-              return const ModalBottom();
+              return ModalBottom(addTask: _handleAddTask);
             },
           );
         },

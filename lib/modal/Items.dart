@@ -1,7 +1,6 @@
-// ignore: file_names
-class DataItem {
+class Items {
   final String id;
   final String name;
 
-  DataItem({required this.id, required this.name});
+  Items({required this.id, required this.name});
 }
