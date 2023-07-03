@@ -27,6 +27,12 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _handleDeleteTask(String id) {
+    setState(() {
+      items.removeWhere((item) => item.id == id);
+    });
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -42,6 +48,7 @@ class _MyAppState extends State<MyApp> {
           children: items
               .map((item) => CardBody(
                     item: item,
+                    handleDelete: _handleDeleteTask,
                   ))
               .toList(),
         ),
